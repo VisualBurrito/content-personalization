@@ -251,7 +251,7 @@ def load_genre_correlation():
     return con.execute("""
         select genre_a, genre_b, pearson_r,
                correlation_strength, correlation_direction
-        from mart_genre_correlation
+        from my_db.main.mart_genre_correlation
     """).df()
 
 @st.cache_data
@@ -259,7 +259,7 @@ def load_movie_correlation():
     con = get_connection()
     return con.execute("""
         select title_a, title_b, pearson_r
-        from mart_movie_correlation
+        from my_db.main.mart_movie_correlation
         order by pearson_r desc
     """).df()
 
@@ -269,7 +269,7 @@ def load_dim_movies():
     return con.execute("""
         select movie_id, title, genres, avg_rating,
                total_ratings, tmdb_rating, popularity_score
-        from dim_movies
+        from my_db.main.dim_movies
         order by total_ratings desc
     """).df()
 
@@ -277,7 +277,7 @@ def load_dim_movies():
 def load_ab_results():
     con = get_connection()
     try:
-        return con.execute("select * from mart_ab_test_results").df()
+        return con.execute("select * from my_db.main.mart_ab_test_results").df()
     except Exception:
         return None
 
@@ -299,13 +299,13 @@ def load_ratings_sample():
     return con.execute("""
         with active_users as (
             select user_id
-            from stg_movielens__ratings
+            from my_db.main.stg_movielens__ratings
             group by user_id
             having count(*) >= 20
             limit 20000
         )
         select r.user_id, r.movie_id, r.rating
-        from stg_movielens__ratings r
+        from my_db.main.stg_movielens__ratings r
         inner join active_users a on r.user_id = a.user_id
     """).df()
 
@@ -315,7 +315,7 @@ def load_movies_with_recommendations():
     con = get_connection()
     return con.execute("""
         select distinct m.movie_id, m.title
-        from dim_movies m
+        from my_db.main.dim_movies m
         inner join mart_user_profiles p on m.movie_id = p.movie_id
         where m.title is not null
         order by m.title
@@ -563,7 +563,7 @@ with tab2:
                 seed_id = int(seed_id[0])
 
                 user_row = con.execute(f"""
-                    select user_id from mart_user_profiles
+                    select user_id from my_db.main.mart_user_profiles
                     where movie_id = {seed_id} and rating >= 4.0
                     limit 1
                 """).df()
@@ -574,7 +574,7 @@ with tab2:
                     user_id = int(user_row.user_id.iloc[0])
 
                     profile = con.execute(f"""
-                        select title, rating from mart_user_profiles
+                        select title, rating from my_db.main.mart_user_profiles
                         where user_id = {user_id}
                         order by rating desc
                         limit 8
@@ -582,7 +582,7 @@ with tab2:
 
                     recs = con.execute(f"""
                         select rank, title, predicted_rating
-                        from mart_svd_recommendations_full
+                        from my_db.main.mart_svd_recommendations_full
                         where user_id = {user_id}
                         order by rank
                     """).df()
