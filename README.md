@@ -4,7 +4,7 @@ A Netflix-style recommendation system built on MovieLens 32M ratings.
 Demonstrates end-to-end analytics engineering: data modeling, correlation
 analysis, matrix factorization, and A/B tested evaluation.
 
-**[Live Demo →](https://your-streamlit-url-here)**
+**[Live Demo →](https://movie--rec.streamlit.app/)**
 
 ---
 
