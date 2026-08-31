@@ -1,0 +1,8 @@
+{
+  "model": "SVD",
+  "n_factors": 50,
+  "top_k": 10,
+  "precision_at_k": 0.5252,
+  "ndcg_at_k": 0.9339,
+  "n_users_evaluated": 1000
+}

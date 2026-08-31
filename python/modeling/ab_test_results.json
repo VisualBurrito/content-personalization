@@ -1,0 +1,10 @@
+{
+  "control_precision": 0.1124,
+  "treatment_precision": 0.1678,
+  "lift_pct": 49.22,
+  "t_statistic": -11.3958,
+  "p_value": 0.0,
+  "significant": true,
+  "n_control": 2456,
+  "n_treatment": 2456
+}
