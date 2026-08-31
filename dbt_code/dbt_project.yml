@@ -1,0 +1,27 @@
+name: 'dbt_code'
+version: '1.0.0'
+profile: 'dbt_code'
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  data_path: "C:/Users/lsmit/OneDrive/Desktop/content_personalization_data"
+  max_user_id: 999999999
+
+models:
+  dbt_code:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+    mart:
+      +materialized: table
