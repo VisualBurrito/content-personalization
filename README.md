@@ -229,9 +229,7 @@ streamlit run python/dashboard/app.py
 ## Background
 
 Senior data analyst with 7+ years of experience spanning healthcare analytics,
-actuarial modeling, and data engineering. Degrees in Physics and Music with
-graduate coursework in Mechanical Engineering — a background that tends to
-produce strong intuitions about signal, uncertainty, and system design.
+actuarial modeling, and data engineering and degrees in Physics and Music.
 
 This project reflects an interest in applying those foundations to
 recommendation systems and content analytics.
