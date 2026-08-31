@@ -1,0 +1,13 @@
+dbt-core==1.11.11
+dbt-duckdb==1.10.1
+duckdb==1.5.4
+implicit==0.7.3
+numpy==2.5.2
+pandas==3.0.5
+python-dotenv==1.2.2
+requests==2.34.2
+scikit-learn==1.9.0
+scipy==1.18.0
+streamlit==1.61.1
+tqdm==4.70.0
+plotly

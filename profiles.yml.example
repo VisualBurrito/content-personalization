@@ -1,0 +1,12 @@
+dbt_code:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /path/to/your/content-personalization/dbt_code/dev.duckdb
+      threads: 2
+    prod:
+      type: duckdb
+      path: md:my_db
+      token: "{{ env_var('MOTHERDUCK') }}"
+      threads: 2

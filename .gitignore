@@ -1,0 +1,15 @@
+.venv/
+.env
+*.duckdb
+dbt_code/target/
+dbt_code/dbt_packages/
+dbt_code/logs/
+data/raw/
+data/tmp/
+data/processed/
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
